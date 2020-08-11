@@ -47,14 +47,9 @@ public class DeveloperActivity extends AppCompatActivity {
     public void finish() {
         boolean env = mRadioGroup.getCheckedRadioButtonId() == R.id.radio_test;
         if (mEnv != env) {
-            new AlertDialog.Builder(this)
-                    .setTitle("FBI Warning").setMessage("切换环境需要重启").setNegativeButton("放弃", null).setPositiveButton("立即重启", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    mPreferences.edit().putBoolean("env", env).commit();
-                    System.exit(0);
-                    Router.with(DeveloperActivity.this).toPath("/login");
-                }
+            new AlertDialog.Builder(this).setTitle("FBI Warning").setMessage("切换环境需要重启").setNegativeButton("放弃", null).setPositiveButton("立即重启", (dialog, which) -> {
+                mPreferences.edit().putBoolean("env", env).commit();
+                Router.with(DeveloperActivity.this).toPath("/login");
             }).create().show();
         } else {
             super.finish();

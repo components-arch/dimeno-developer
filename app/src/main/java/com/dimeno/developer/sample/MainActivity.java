@@ -18,7 +18,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         DarkStatusBar.get().fitDark(this);
         setContentView(R.layout.activity_main);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bind();
+    }
+
+    private void bind() {
         SharedPreferences preferences = getSharedPreferences("developer", Context.MODE_PRIVATE);
         ((TextView) findViewById(R.id.textView)).setText(String.format("当前环境：%s", preferences.getBoolean("env", true) ? "测试" : "正式"));
     }
