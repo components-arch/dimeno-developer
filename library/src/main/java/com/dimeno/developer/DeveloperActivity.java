@@ -49,7 +49,10 @@ public class DeveloperActivity extends AppCompatActivity {
         if (mEnv != env) {
             new AlertDialog.Builder(this).setTitle("FBI Warning").setMessage("切换环境需要重启").setNegativeButton("放弃", null).setPositiveButton("立即重启", (dialog, which) -> {
                 mPreferences.edit().putBoolean("env", env).commit();
-                Router.with(DeveloperActivity.this).toPath("/login");
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("init", true);
+                Router.with(DeveloperActivity.this).setExtras(bundle).toPath("/login");
+                DeveloperActivity.super.finish();
             }).create().show();
         } else {
             super.finish();
