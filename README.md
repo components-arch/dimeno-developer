@@ -4,7 +4,9 @@
 [![Platform](https://img.shields.io/badge/Platform-Android-00CC00.svg?style=flat)](https://www.android.com)
 [![](https://jitpack.io/v/dimeno-tech/dimeno-developer.svg)](https://jitpack.io/#dimeno-tech/dimeno-developer)
 
-根目录
+### 依赖导入
+
+项目根目录
 
 ``` gradle
 allprojects {
@@ -14,7 +16,8 @@ allprojects {
 	}
 }
 ```
-项目目录
+
+模块目录
 
 ``` gradle
 dependencies {
